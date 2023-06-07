@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-flow: column;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense</title>
+    
+</head>
+<body>
+    <h1 id="headingEle"></h1>
+    <input id="inputAmount" type="text"></input>
+    <button id="btnCounter">+</button>
+    
+    <script>
+         let totalExpense=0;
+        const headingEl=document.querySelector("#headingEle"); 
+        headingEl.textContent=totalExpense;
+
+       
+         function amount(){
+            
+            const inpElement=document.querySelector("#inputAmount");
+            const inputText=inpElement.value;
+            const intValue=parseInt(inputText,10);
+            totalExpense=totalExpense+ intValue;
+             //   document.getElementById("#inputAmount").innerHTML=totalExpense;
+            console.log({inputText});
+            console.log({intValue});
+            console.log({totalExpense});
+            headingEl.textContent=totalExpense;
+         }
+        
+         const element=document.querySelector("#btnCounter");
+        //  element.addEventListener("")
+       element.addEventListener("click",amount,false);
+       
+        
+
+    </script>
+</body>
+</html>
