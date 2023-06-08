@@ -10,6 +10,10 @@
             align-items: center;
             height: 100vh;
             flex-flow: column;
+
+        }
+        div{
+            background-color: blueviolet;
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,27 +22,60 @@
 </head>
 <body>
     <h1 id="headingEle"></h1>
-    <input id="inputAmount" type="text"></input>
+    <input id="inputAmount" type="text">
+    <input id="inputDesc" type="text">
     <button id="btnCounter">+</button>
+    <!-- <h4>Amount::Desc</h4> -->
+    <div id="tableid"></div>
     
     <script>
          let totalExpense=0;
         const headingEl=document.querySelector("#headingEle"); 
+        const inpElement=document.querySelector("#inputAmount");
+        const inputDescription=document.querySelector("#inputDesc");
+        const tableidEl=document.querySelector("#tableid");
         headingEl.textContent=totalExpense;
 
-       
+          
+          let totalExpenseArray=[];
          function amount(){
             
-            const inpElement=document.querySelector("#inputAmount");
+            const arr={};
             const inputText=inpElement.value;
             const intValue=parseInt(inputText,10);
             totalExpense=totalExpense+ intValue;
-             //   document.getElementById("#inputAmount").innerHTML=totalExpense;
-            console.log({inputText});
-            console.log({intValue});
-            console.log({totalExpense});
-            headingEl.textContent=totalExpense;
+             
+           // console.log({inputText});
+           // console.log({intValue});
+           // console.log({totalExpense});
+           const exp=`The total expense  :${totalExpense}`;
+            headingEl.textContent=exp;
+            const inputDesc=inputDescription.value;
+           // console.log({inputDesc});
+
+            arr.desc=inputDesc;
+            arr.totalAmount=intValue;
+            totalExpenseArray.push(arr);
+           // console.clear();
+            //console.table(totalExpenseArray)
+        //         const data1=totalExpenseArray[0];
+        //         const data2=totalExpenseArray[1]
+
+        //     const dataText1=`expense :${data1.totalAmount}::Dec:${data1.desc}`;
+        //     const tableData= 
+        //    ` <div> ${dataText1}</div>`
+       const allExpenseHTML= totalExpenseArray.map(expenseItem=>{
+            return `<div>${expenseItem.totalAmount}::${expenseItem.desc}</div>`});
+
+            const joinedHTML=allExpenseHTML.join("");
+        
+                        console.log(joinedHTML);
+
+           tableidEl.innerHTML=joinedHTML;
+
+            
          }
+
         
          const element=document.querySelector("#btnCounter");
         //  element.addEventListener("")
